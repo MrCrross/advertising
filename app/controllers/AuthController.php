@@ -4,9 +4,11 @@ namespace Controllers;
 
 use Core\Controller;
 use Core\View;
+use Illuminate\Database\Capsule\Manager as Capsule;
 use Models\City;
 use Models\User;
 use PDOException;
+use Throwable;
 
 class AuthController extends Controller
 {
@@ -50,7 +52,8 @@ class AuthController extends Controller
         $first_name = $_POST['first_name'];
         $city = $_POST['city'];
         $address = $_POST['address'];
-        $role = $_POST['role'];
+        $role = 2;
+        Capsule::beginTransaction();
         try {
             $user = User::create([
                 'name'=>$login,
@@ -58,12 +61,14 @@ class AuthController extends Controller
                 'last_name'=>$last_name,
                 'role'=>$role,
                 'first_name'=>$first_name,
-                'city'=>$city,
+                'city_id'=>$city,
                 'address'=>$address,
             ]);
+            Capsule::commit();
             $this::session($user);
             View::redirect('/');
-        }catch (PDOException $e){
+        }catch (Throwable $e){
+            Capsule::rollback();
             $_SESSION['message'] = 'Произошла ошибка. Данные заполнены неверно.'.$e->getMessage();
             View::redirect('/registration');
         }

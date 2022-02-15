@@ -25,8 +25,18 @@ class CreatePostsTable extends Migration
             $table->tinyInteger('status')->unsigned()->length(1);
             $table->integer('views')->unsigned();
             $table->integer('price')->unsigned();
-            $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Category::class);
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
+            $table->bigInteger('category_id')->unsigned();
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
             $table->timestamps();
         });
     }

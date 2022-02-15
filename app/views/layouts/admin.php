@@ -21,48 +21,115 @@ use Core\Auth;
 $route = $_SERVER['REQUEST_URI'];
 $user = Auth::user();
 ?>
-<header class="header-admin">
-    <div class="header-admin__wrapper">
-        <div class="header-admin-item header-admin-item__logo <?php if ($route === '/' or strpos($route, 'categories')) echo 'active'; ?>">
-            <a href="/" class="link">
-                <img src="/public/storage/images/logo.png"
-                     alt="logo" width="140" height="40"
-                     class="header-logo">
-            </a>
-            <a data-toggle="menu">
-                <img src="/public/storage/images/menu.svg" alt="menu" width="30" height="20">
-            </a>
-        </div>
-        <div class="header-item__links">
-            <div class="header-item">
-                <a href="/admin"
-                   class="link <?php if (strpos($route, 'admin')) echo 'active'; ?>">
-                    Админка
+<div class="admin__container">
+    <header class="header">
+        <div class="header-admin__wrapper">
+            <div class="header-admin-item__logo">
+                <a href="/">
+                    <img src="/public/storage/images/logo.png"
+                         alt="logo" width="140" height="40"
+                         class="header-logo">
+                </a>
+                <a data-toggle="menu" class="menu">
+                    <img data-toggle="menu" src="/public/storage/images/svg/menu.svg" alt="menu" width="30" height="20">
                 </a>
             </div>
-            <div class="header-item">
-                <div class="dropdown link <?php if (strpos($route, 'lk')) echo 'active'; ?>">
-                    <?php echo $user->name; ?>
-                    <div class="dropdown-content">
-                        <a href="/lk" class="link">Личный кабинет</a>
-                        <form action="/api/logout" method="post">
-                            <button type="submit" class="link">Выйти</button>
-                        </form>
-                    </div>
+            <div class="header-admin-item__links">
+                <div class="header-admin-item <?php if ($route=== '/admin') echo 'active'; ?>">
+                    <a href="/admin"
+                       class="full link <?php if ($route=== '/admin') echo 'active'; ?>">
+                        <img src="/public/storage/images/svg/main.svg" class="mr-1" alt="Админка" width="30" height="20">
+                        <span class="text-item">Главная</span>
+                    </a>
+                </div>
+                <div class="header-admin-item <?php if (strpos($route, 'admin/posts')) echo 'active'; ?>">
+                    <a href="/admin/posts/create"
+                       class="full link <?php if (strpos($route, 'admin/posts')) echo 'active'; ?>">
+                        <img src="/public/storage/images/svg/post.svg" class="mr-1" alt="Объявления" width="30" height="20">
+                        <span class="text-item">Объявления</span>
+                    </a>
+                </div>
+                <div class="header-admin-item <?php if (strpos($route, 'admin/cities')) echo 'active'; ?>">
+                    <a href="/admin/cities/create"
+                       class="full link <?php if (strpos($route, 'admin/cities')) echo 'active'; ?>">
+                        <img src="/public/storage/images/svg/city.svg" class="mr-1" alt="Города" width="30" height="20">
+                        <span class="text-item">Города</span>
+                    </a>
+                </div>
+                <div class="header-admin-item <?php if (strpos($route, 'admin/users')) echo 'active'; ?>">
+                    <a href="/admin/users/create"
+                       class="full link <?php if (strpos($route, 'admin/users')) echo 'active'; ?>">
+                        <img src="/public/storage/images/svg/user.svg" class="mr-1" alt="Пользователи" width="30" height="20">
+                        <span class="text-item">Пользователи</span>
+                    </a>
+                </div>
+                <div class="header-admin-item <?php if (strpos($route, 'lk')) echo 'active'; ?>">
+                    <a href="/lk"
+                       class="full link <?php if (strpos($route, 'lk')) echo 'active'; ?>">
+                        <img src="/public/storage/images/svg/lk.svg" class="mr-1" alt="Личный кабинет" width="30" height="20">
+                        <span class="text-item">Личный кабинет</span>
+                    </a>
+                </div>
+                <div class="header-admin-item">
+                    <form action="/api/logout" class="full" method="post">
+                        <button type="submit" class="full link">
+                            <img src="/public/storage/images/svg/exit.svg" class="mr-1" alt="Выйти" width="30" height="20">
+                            <span class="text-item">Выйти</span>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
-
-    </div>
-</header>
-<script src="/public/js/modal.js"></script>
-<?php echo $content; ?>
+    </header>
+    <script src="/public/js/modal.js"></script>
+    <?php echo $content; ?>
+</div>
 <script>
-    const dropdown = document.querySelectorAll('.dropdown')
-    dropdown.forEach(function (value) {
-        value.addEventListener('click', function (e) {
-            e.target.querySelector('.dropdown-content').classList.toggle('block');
-        })
+    if(window.screen.width<1000) {
+        toggleMenu()
+        const header = document.querySelector('.header')
+        const wrapper = header.querySelector('.header-admin__wrapper')
+        const menu = header.querySelector('.menu')
+        menu.style.display='none'
+        wrapper.style.minWidth='50px'
+    }
+
+    function toggleMenu() {
+        const header = document.querySelector('.header')
+        const wrapper = header.querySelector('.header-admin__wrapper')
+        const logo = header.querySelector('.header-logo')
+        const texts = header.querySelectorAll('.text-item')
+        const links = header.querySelectorAll('.full')
+        const alt =logo.getAttribute('alt')
+        if (alt === 'logo') {
+            wrapper.style.minWidth='80px'
+            logo.setAttribute('alt', 'mini-logo')
+            logo.src = '/public/storage/images/logo-mini.png'
+            logo.width = '36'
+            texts.forEach(function (el) {
+                el.style.display = 'none'
+            })
+            links.forEach(function (el) {
+                el.style.justifyContent='center'
+            })
+        } else if (alt === 'mini-logo') {
+            wrapper.style.minWidth='205px'
+            logo.setAttribute('alt', 'logo')
+            logo.src = '/public/storage/images/logo.png'
+            logo.width = '140'
+            texts.forEach(function (el) {
+                el.style.display = 'inline-block'
+            })
+            links.forEach(function (el) {
+                el.style.justifyContent='start'
+            })
+        }
+    }
+
+    document.addEventListener('click', function (e) {
+        if (e.target.dataset.toggle === 'menu') {
+            toggleMenu();
+        }
     })
 </script>
 </body>

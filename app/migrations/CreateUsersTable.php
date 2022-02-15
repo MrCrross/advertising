@@ -25,7 +25,12 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('role')->unsigned()->length(1);
             $table->string('address');
             $table->string('phone',11)->unique();
-            $table->foreignIdFor(City::class);
+            $table->bigInteger('city_id')->unsigned();
+            $table->foreign('city_id')
+                ->references('id')
+                ->on('cities')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
             $table->timestamps();
         });
     }

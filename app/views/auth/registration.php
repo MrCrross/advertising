@@ -12,7 +12,6 @@
             <div class="form-item">
                 <label for="name" class="form-item__label">Логин:</label>
                 <input type="text" id="name" name="name" class="form-item__input" placeholder="Логин" maxlength="255" required>
-                <input type="text" name="role" value="2" required hidden>
             </div>
             <div class="form-item">
                 <label for="password" class="form-item__label">Пароль:</label>
@@ -28,7 +27,7 @@
             </div>
             <div class="form-item">
                 <label for="city" class="form-item__label">Город:</label>
-                <select class="form-item__select form-item__size" name="city" id="city">
+                <select class="form-item__select form-item__size" name="city" id="city" required>
                     <?php if(!empty($cities)):?>
                     <?php foreach ($cities as $city):?>
                             <option value="<?php echo $city->id;?>"><?php echo $city->name;?></option>
@@ -38,7 +37,7 @@
             </div>
             <div class="form-item">
                 <label for="address" class="form-item__label">Адрес:</label>
-                <input type="text" id="address" name="address" class="form-item__input" placeholder="Адрес" maxlength="255">
+                <input type="text" id="address" name="address" class="form-item__input" placeholder="Адрес" maxlength="255" required>
             </div>
             <div class="form-item">
                 <button class="btn form-item__submit" type="submit">

@@ -1,0 +1,63 @@
+<?php
+
+namespace Controllers;
+
+use Core\Controller;
+use Core\View;
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Models\City;
+use Throwable;
+
+class CityController extends Controller
+{
+
+    public function insert()
+    {
+        $name = $_POST['name'];
+        City::create([
+            'name'=>$name
+        ]);
+        $_SESSION['message'] = 'Город успешно добавлен';
+        View::redirect('/admin/cities/create');
+    }
+
+    public function update()
+    {
+        if (!isset($_POST['id'])) {
+            View::errors(404);
+            exit;
+        }
+        $id = $_POST['id'];
+        $name = $_POST['name'];
+        Capsule::beginTransaction();
+        try{
+            City::where('id',$id)->update([
+                'name'=>$name
+            ]);
+            Capsule::commit();
+            $_SESSION['message'] = 'Город успешно изменен';
+        }catch (Throwable $e){
+            Capsule::rollBack();
+            $_SESSION['message'] = 'Ошибка:' . $e->getMessage();
+        }
+        View::redirect('/admin/cities/edit');
+    }
+
+    public function delete()
+    {
+        $id = $_POST['id'];
+        Capsule::beginTransaction();
+        try{
+            City::where('id',$id)->delete();
+            Capsule::commit();
+            $_SESSION['message'] = 'Город успешно изменен';
+        }catch (Throwable $e){
+            Capsule::rollBack();
+            $_SESSION['message'] = 'Ошибка:' . $e->getMessage();
+            if ($e->getCode()==='23000') $_SESSION['message'] = 'Невозможно удалить. Некоторые пользователи из этого города.';
+
+        }
+        View::redirect('/admin/cities/delete');
+    }
+
+}

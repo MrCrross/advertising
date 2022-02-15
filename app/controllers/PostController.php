@@ -89,10 +89,13 @@ class PostController extends Controller
         $status = 1;
         $views = 0;
         $user_id = Auth::user()->id;
+        if(Auth::user()->role===1) $user_id = $_POST['user'];
         $category_id = $_POST['category'];
         $storage = $_SERVER['DOCUMENT_ROOT'] . '\public\storage\images\posts\\';
         $url = '/public/storage/images/posts/';
         $files = [];
+        $address ='/posts/create';
+        if(Auth::user()->role ===1) $address ='admin/posts/create';
         Capsule::beginTransaction();
         try {
             $num = 1;
@@ -104,7 +107,7 @@ class PostController extends Controller
                     unlink($_SERVER['DOCUMENT_ROOT'] . $file);
                 }
                 $_SESSION['message'] = 'Ошибка сохранения изображения ' . $num;
-                View::redirect('/posts/create');
+                View::redirect($address);
             }
             $files[] = $url . $filename;
             $post = Post::create([
@@ -127,7 +130,7 @@ class PostController extends Controller
                             unlink($_SERVER['DOCUMENT_ROOT'] . $file);
                         }
                         $_SESSION['message'] = 'Ошибка сохранения изображения ' . $num . ' ' . $images['name'][$i];
-                        View::redirect('/posts/create');
+                        View::redirect($address);
                     }
                     $files[] = $url . $filename;
                     PostImage::create([
@@ -138,14 +141,14 @@ class PostController extends Controller
             }
             Capsule::commit();
             $_SESSION['message'] = 'Объявление успешно добавлено';
-            View::redirect('/posts/create');
+            View::redirect($address);
         } catch (Throwable $e) {
             foreach ($files as $file) {
                 unlink($_SERVER['DOCUMENT_ROOT'] . $file);
             }
             Capsule::rollBack();
             $_SESSION['message'] = 'Ошибка:' . $e->getMessage();
-            View::redirect('/posts/create');
+            View::redirect($address);
         }
 
     }
@@ -165,6 +168,7 @@ class PostController extends Controller
         $status = $_POST['status'];
         $views = 0;
         $user_id = Auth::user()->id;
+        if(Auth::user()->role===1) $user_id = $_POST['user'];
         $category_id = $_POST['category'];
         $storage = $_SERVER['DOCUMENT_ROOT'] . '\public\storage\images\posts\\';
         $url = '/public/storage/images/posts/';
@@ -178,6 +182,8 @@ class PostController extends Controller
             'user_id' => $user_id,
             'category_id' => $category_id,
         ];
+        $address ='/posts/edit';
+        if(Auth::user()->role ===1) $address ='admin/posts/edit';
         Capsule::beginTransaction();
         try {
             $post = Post::with('images')->where('id', $id)->first();
@@ -188,7 +194,7 @@ class PostController extends Controller
                 if (!move_uploaded_file($image['tmp_name'], $storage . $filename)) {
                     Capsule::rollBack();
                     $_SESSION['message'] = 'Ошибка сохранения изображения ' . $num;
-                    View::redirect('/posts/edit');
+                    View::redirect($address);
                 }
                 $files[] = $url . $filename;
                 $dataPost['image']=$url . $filename;
@@ -208,7 +214,7 @@ class PostController extends Controller
                             unlink($_SERVER['DOCUMENT_ROOT'] . $file);
                         }
                         $_SESSION['message'] = 'Ошибка сохранения изображения ' . $num . ' ' . $images['name'][$i];
-                        View::redirect('/posts/edit');
+                        View::redirect($address);
                     }
                     $files[] = $url . $filename;
                     PostImage::create([
@@ -219,14 +225,14 @@ class PostController extends Controller
             }
             Capsule::commit();
             $_SESSION['message'] = 'Объявление изменено успешно';
-            View::redirect('/posts/edit');
+            View::redirect($address);
         } catch (Throwable $e) {
             foreach ($files as $file) {
                 unlink($_SERVER['DOCUMENT_ROOT'] . $file);
             }
             Capsule::rollBack();
             $_SESSION['message'] = 'Ошибка:' . $e->getMessage();
-            View::redirect('/posts/edit');
+            View::redirect($address);
         }
     }
 
@@ -242,4 +248,5 @@ class PostController extends Controller
         unlink($_SERVER['DOCUMENT_ROOT'] . $post->image);
         Post::where('id', $id)->delete();
     }
+
 }

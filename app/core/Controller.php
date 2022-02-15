@@ -19,7 +19,6 @@ abstract class Controller
         if (!$this->checkRule()) {
             View::errors(403);
         }
-        if(Auth::check()) if(Auth::user()->id) $this->view->layout='admin';
     }
 
     public function checkRule()

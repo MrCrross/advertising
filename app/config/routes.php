@@ -11,6 +11,11 @@ return [
         'controller' => 'MainController',
         'action' => 'lk'
     ],
+    // Админка
+    'admin'=>[
+        'controller' => 'AdminController',
+        'action' => 'index'
+    ],
     // Вывод определенной категории на главной странице
     'categories/category\d{1,}' => [
         'controller' => 'MainController',
@@ -46,6 +51,46 @@ return [
         'controller'=>'PostController',
         'action'=>'edit'
     ],
+    // Страница Добавление постов администратором
+    'admin/posts/create'=>[
+        'controller'=>'AdminController',
+        'action'=>'createPost'
+    ],
+    // Страница редактирования постов администратором
+    'admin/posts/edit'=>[
+        'controller'=>'AdminController',
+        'action'=>'editPost'
+    ],
+    // Страница Добавление города администратором
+    'admin/cities/create'=>[
+        'controller'=>'AdminController',
+        'action'=>'createCity'
+    ],
+    // Страница редактирования города администратором
+    'admin/cities/edit'=>[
+        'controller'=>'AdminController',
+        'action'=>'editCity'
+    ],
+    // Страница удаление города администратором
+    'admin/cities/delete'=>[
+        'controller'=>'AdminController',
+        'action'=>'deleteCity'
+    ],
+    // Страница Добавление пользователя администратором
+    'admin/users/create'=>[
+        'controller'=>'AdminController',
+        'action'=>'createUser'
+    ],
+    // Страница редактирования пользователей администратором
+    'admin/users/edit'=>[
+        'controller'=>'AdminController',
+        'action'=>'editUser'
+    ],
+    // Страница удаление пользователей администратором
+    'admin/users/delete'=>[
+        'controller'=>'AdminController',
+        'action'=>'deleteUser'
+    ],
     // Обработка входа
     'api/login' => [
         'controller' => 'AuthController',
@@ -61,10 +106,20 @@ return [
         'controller' => 'AuthController',
         'action' => 'logout'
     ],
+    // Добавление пользователя администратором
+    'api/user/create' => [
+        'controller' => 'UserController',
+        'action' => 'create'
+    ],
     // Изменить данные пользователя
     'api/user/update' => [
         'controller' => 'UserController',
         'action' => 'update'
+    ],
+    // Удаление пользователя администратором
+    'api/user/delete' => [
+        'controller' => 'UserController',
+        'action' => 'delete'
     ],
     // Изменить пароль пользователя
     'api/user/changePassword' => [
@@ -84,6 +139,21 @@ return [
     // Удаление поста пользователем
     'api/posts/delete'=>[
         'controller'=>'PostController',
+        'action'=>'delete'
+    ],
+    // Обработка Добавление города
+    'api/cities/create'=>[
+        'controller'=>'CityController',
+        'action'=>'insert'
+    ],
+    // Обработка Изменение города
+    'api/cities/update'=>[
+        'controller'=>'CityController',
+        'action'=>'update'
+    ],
+    // Обработка Удаление города
+    'api/cities/delete'=>[
+        'controller'=>'CityController',
         'action'=>'delete'
     ],
     //Миграции

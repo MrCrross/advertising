@@ -3,7 +3,9 @@
           method="post" enctype="multipart/form-data">
         <div class="container-fluid flex-center">
             <div class="message">
-                <?php if (isset($message) and $message != ''): ?>
+                <?php use Core\Auth;
+
+                if (isset($message) and $message != ''): ?>
                     <?php echo $message; ?>
                 <?php endif; ?>
             </div>
@@ -17,6 +19,15 @@
                      id="mainImage"
                      class="post-logo__image">
                 <div class="form-post__panels">
+                    <?php if(Auth::user()->role===1) :?>
+                    <select class="form-item__select" name="user" required>
+                        <?php foreach ($users as $user): ?>
+                            <option value="<?php echo $user->id; ?>">
+                                <?php echo $user->name.' ('.$user->last_name.' '.$user->first_name.')'; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <?php endif; ?>
                     <label for="image" class="form-item__file_label mt-1 mb-1">
                         <input type="file" name="image" id="image"
                                class="form-item__file"

@@ -28,7 +28,7 @@ if($auth) {
 ?>
 <header class="header">
     <div class="header__wrapper">
-        <div class="header-item header-item__logo">
+        <div class="header-item">
             <a href="/"
                class="link <?php if ($route === '/' or strpos($route, 'categories')) echo 'active'; ?>">
                 <img src="/public/storage/images/logo.png"

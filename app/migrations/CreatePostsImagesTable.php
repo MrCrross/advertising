@@ -19,7 +19,12 @@ class CreatePostsImagesTable extends Migration
         Capsule::schema()->create('post_images', function (Blueprint $table) {
             $table->id();
             $table->string('image')->unique();
-            $table->foreignIdFor(Post::class);
+            $table->bigInteger('post_id')->unsigned();
+            $table->foreign('post_id')
+                ->references('id')
+                ->on('posts')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }
