@@ -7,13 +7,13 @@ $route = $_SERVER['REQUEST_URI'];
             <div class="header-item">
                 <a href="/admin/posts/create"
                    class="link <?php if ($route === '/admin/posts/create') echo 'active'; ?>">
-                    Объявления - Добавить
+                    Добавить
                 </a>
             </div>
             <div class="header-item">
                 <a href="/admin/posts/edit"
                    class="link <?php if ($route === '/admin/posts/edit') echo 'active'; ?>">
-                    Объявления - Редактировать
+                    Редактировать
                 </a>
             </div>
         </div>

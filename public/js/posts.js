@@ -6,7 +6,7 @@ files.forEach(function (el) {
         const images = document.querySelector('.post-images')
         const label = input.parentElement
         const text = label.querySelector('div')
-        text.innerHTML = ''
+        // text.innerHTML = ''
         if (input.files.length === 0) {
             text.innerHTML = 'Выберите файл'
             if(input.id ==='image'){
@@ -31,14 +31,14 @@ files.forEach(function (el) {
                         main.dataset.toggle='modal'
                         main.dataset.title=file.name
                         main.setAttribute('title',file.name)
-                        text.innerText +=file.name
+                        // text.innerText +=file.name
                     } else{
                         let span = document.createElement('span');
                         span.innerHTML = ['<img class="thumb" src="', e.target.result,
                             '" title="', file.name, '" data-toggle="modal" ',
                             'data-title="',file.name,'"/>'].join('');
                         images.insertBefore(span, null);
-                        text.innerText +=file.name+'\n'
+                        // text.innerText +=file.name+'\n'
                     }
                 }
             })(f)

@@ -50,7 +50,7 @@ class CityController extends Controller
         try{
             City::where('id',$id)->delete();
             Capsule::commit();
-            $_SESSION['message'] = 'Город успешно изменен';
+            $_SESSION['message'] = 'Город успешно удален';
         }catch (Throwable $e){
             Capsule::rollBack();
             $_SESSION['message'] = 'Ошибка:' . $e->getMessage();

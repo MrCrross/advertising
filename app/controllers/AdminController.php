@@ -71,6 +71,29 @@ class AdminController extends Controller
         ]);
     }
 
+    public function createCategory()
+    {
+        $this->view->render('admin/categories/create',[
+            'message'=>self::getMessage()
+        ]);
+    }
+
+    public function editCategory()
+    {
+        $this->view->render('admin/categories/edit',[
+            'categories'=>Category::orderBy('name')->get(),
+            'message'=>self::getMessage()
+        ]);
+    }
+
+    public function deleteCategory()
+    {
+        $this->view->render('admin/categories/delete',[
+            'categories'=>Category::orderBy('name')->get(),
+            'message'=>self::getMessage()
+        ]);
+    }
+
     public function createUser()
     {
         $this->view->render('admin/users/create',[

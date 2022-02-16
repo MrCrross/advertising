@@ -183,7 +183,7 @@ class PostController extends Controller
             'category_id' => $category_id,
         ];
         $address ='/posts/edit';
-        if(Auth::user()->role ===1) $address ='admin/posts/edit';
+        if(Auth::user()->role ===1) $address ='/admin/posts/edit';
         Capsule::beginTransaction();
         try {
             $post = Post::with('images')->where('id', $id)->first();

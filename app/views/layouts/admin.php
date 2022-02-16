@@ -56,6 +56,13 @@ $user = Auth::user();
                         <span class="text-item">Города</span>
                     </a>
                 </div>
+                <div class="header-admin-item <?php if (strpos($route, 'admin/categories')) echo 'active'; ?>">
+                    <a href="/admin/categories/create"
+                       class="full link <?php if (strpos($route, 'admin/categories')) echo 'active'; ?>">
+                        <img src="/public/storage/images/svg/category.svg" class="mr-1" alt="Города" width="30" height="20">
+                        <span class="text-item">Категории</span>
+                    </a>
+                </div>
                 <div class="header-admin-item <?php if (strpos($route, 'admin/users')) echo 'active'; ?>">
                     <a href="/admin/users/create"
                        class="full link <?php if (strpos($route, 'admin/users')) echo 'active'; ?>">

@@ -76,6 +76,21 @@ return [
         'controller'=>'AdminController',
         'action'=>'deleteCity'
     ],
+    // Страница Добавление Категории администратором
+    'admin/categories/create'=>[
+        'controller'=>'AdminController',
+        'action'=>'createCategory'
+    ],
+    // Страница редактирования Категории администратором
+    'admin/categories/edit'=>[
+        'controller'=>'AdminController',
+        'action'=>'editCategory'
+    ],
+    // Страница удаление Категории администратором
+    'admin/categories/delete'=>[
+        'controller'=>'AdminController',
+        'action'=>'deleteCategory'
+    ],
     // Страница Добавление пользователя администратором
     'admin/users/create'=>[
         'controller'=>'AdminController',
@@ -154,6 +169,21 @@ return [
     // Обработка Удаление города
     'api/cities/delete'=>[
         'controller'=>'CityController',
+        'action'=>'delete'
+    ],
+    // Обработка Добавление Категории
+    'api/categories/create'=>[
+        'controller'=>'CategoryController',
+        'action'=>'insert'
+    ],
+    // Обработка Изменение Категории
+    'api/categories/update'=>[
+        'controller'=>'CategoryController',
+        'action'=>'update'
+    ],
+    // Обработка Удаление Категории
+    'api/categories/delete'=>[
+        'controller'=>'CategoryController',
         'action'=>'delete'
     ],
     //Миграции

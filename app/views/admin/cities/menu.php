@@ -7,19 +7,19 @@ $route = $_SERVER['REQUEST_URI'];
             <div class="header-item">
                 <a href="/admin/cities/create"
                    class="link <?php if ($route === '/admin/cities/create') echo 'active'; ?>">
-                    Города - Добавить
+                    Добавить
                 </a>
             </div>
             <div class="header-item">
                 <a href="/admin/cities/edit"
                    class="link <?php if ($route === '/admin/cities/edit') echo 'active'; ?>">
-                    Города - Редактировать
+                    Редактировать
                 </a>
             </div>
             <div class="header-item">
                 <a href="/admin/cities/delete"
                    class="link <?php if ($route === '/admin/cities/delete') echo 'active'; ?>">
-                    Города - Удалить
+                    Удалить
                 </a>
             </div>
         </div>
