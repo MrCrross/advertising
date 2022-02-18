@@ -94,5 +94,15 @@ if($auth) {
         })
     })
 </script>
+<script>
+    localStorage.setItem('auth',<?php echo Auth::check();?>)
+    function alertPhone(phone) {
+        if (localStorage.getItem('auth')) {
+            alert(`${phone}`)
+        } else {
+            location.href = '/login'
+        }
+    }
+</script>
 </body>
 </html>

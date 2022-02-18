@@ -24,7 +24,7 @@ class MainController extends Controller
      */
     public function index()
     {
-        if(Auth::check() and Auth::user()->role===1) View::redirect('/admin');
+//        if(Auth::check() and Auth::user()->role===1) View::redirect('/admin');
         $this->view->render('main', [
             'posts' => Post::with('user', 'category')
                 ->where('status','=','1')

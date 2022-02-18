@@ -1,7 +1,7 @@
 <?php
 $route = $_SERVER['REQUEST_URI'];
 ?>
-<div class="workspace__container" style="display:flex; flex-direction: column; justify-content: center;">
+<div class="workspace__container">
     <div class="header-admin">
         <div class="header__wrapper">
             <div class="header-item__links">

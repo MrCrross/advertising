@@ -318,7 +318,7 @@ button.link {
     width: 100%;
     max-width: 100%;
     display: grid;
-    grid-template-columns: repeat(10,100px);
+    grid-template-columns: repeat(10,1fr);
 }
 
 /* Авторизация и регистрация */

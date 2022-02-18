@@ -24,8 +24,8 @@
                 <div class="post-info__title">
                     <span class="title"><?php echo $post->title; ?></span>
                     <span class="title">
-                    <span class="post-info__price"><?php echo $post->price; ?></span> руб.
-                </span>
+                        <span class="post-info__price"><?php echo $post->price; ?></span> руб.
+                    </span>
                 </div>
                 <div class="post-info__title">
                     <p class="title"><?php echo $post->category->name; ?></p>
@@ -36,7 +36,8 @@
                         <?php foreach ($post->images as $image): ?>
                             <img src="<?php echo $image->image; ?>"
                                  alt="<?php echo $post->title; ?>"
-                                 class="post-logo__image post-images__item">
+                                 data-toggle="modal"
+                                 class="thumb">
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>

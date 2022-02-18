@@ -22,7 +22,7 @@
                     <?php if(Auth::user()->role===1) :?>
                     <select class="form-item__select" name="user" required>
                         <?php foreach ($users as $user): ?>
-                            <option value="<?php echo $user->id; ?>">
+                            <option value="<?php echo $user->id; ?>" <?php if(Auth::user()->id === $user->id) echo "selected";?>>
                                 <?php echo $user->name.' ('.$user->last_name.' '.$user->first_name.')'; ?>
                             </option>
                         <?php endforeach; ?>

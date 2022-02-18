@@ -1,4 +1,6 @@
-<?php $route = $_SERVER['REQUEST_URI']; ?>
+<?php use Core\Auth;
+
+$route = $_SERVER['REQUEST_URI']; ?>
 <div class="container__fluid">
     <div class="category__container">
         <p class="title">Категории:</p>
@@ -34,7 +36,7 @@
                                 <?php echo $post->created_at; ?>
                             </p>
                             <button class="btn btn-my post-user__phone"
-                                    onclick="alert('<?php echo $post->user->phone; ?>')">
+                                    onclick="alertPhone(<?php echo $post->user->phone;?>)">
                                 <?php echo mb_substr($post->user->phone, 0, 3) . '. . . . . . .'; ?>
                             </button>
                         </div>
