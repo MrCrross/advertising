@@ -1,12 +1,10 @@
 <?php
 
-namespace Migrations;
+namespace App\Migrations;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Models\Category;
-use Models\User;
 
 class CreatePostsTable extends Migration
 {

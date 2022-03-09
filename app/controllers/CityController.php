@@ -1,11 +1,11 @@
 <?php
 
-namespace Controllers;
+namespace  App\Controllers;
 
-use Core\Controller;
-use Core\View;
+use App\Core\Controller;
+use App\Core\View;
+use App\Models\City;
 use Illuminate\Database\Capsule\Manager as Capsule;
-use Models\City;
 use Throwable;
 
 class CityController extends Controller

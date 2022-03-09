@@ -1,11 +1,11 @@
 <?php
 
-namespace Controllers;
+namespace  App\Controllers;
 
-use Core\Controller;
-use Core\View;
+use App\Core\Controller;
+use App\Core\View;
+use App\Models\Category;
 use Illuminate\Database\Capsule\Manager as Capsule;
-use Models\Category;
 use Throwable;
 
 class CategoryController extends Controller

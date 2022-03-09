@@ -1,9 +1,9 @@
 <?php
 
-namespace Migrations;
+namespace App\Migrations;
 
+use App\Seeders\DatabaseSeeder;
 use PDOException;
-use Seeders\DatabaseSeeder;
 
 class Migrate
 {

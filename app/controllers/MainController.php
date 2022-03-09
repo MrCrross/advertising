@@ -1,14 +1,15 @@
 <?php
 
-namespace Controllers;
+namespace  App\Controllers;
 
-use Core\Auth;
-use Core\Controller;
-use Core\View;
-use Models\Category;
-use Models\City;
-use Models\Post;
-use Models\User;
+
+
+use App\Core\Auth;
+use App\Core\Controller;
+use App\Models\Category;
+use App\Models\City;
+use App\Models\Post;
+use App\Models\User;
 
 class MainController extends Controller
 {

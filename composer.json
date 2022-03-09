@@ -7,17 +7,11 @@
         }
     ],
     "require": {
-        "illuminate/database": "^8.82",
+        "illuminate/database": "^8.82"
     },
     "autoload": {
         "psr-4": {
-            "Controllers\\": "app/controllers/",
-            "Core\\": "app/core/",
-            "Config\\": "app/config/",
-            "Models\\": "app/models/",
-            "Seeders\\": "app/seeders/",
-            "Migrations\\": "app/migrations/",
-            "Views\\": "app/views/",
+            "App\\": "app/",
             "Public\\": "public/"
         }
     }

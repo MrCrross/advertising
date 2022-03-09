@@ -16,7 +16,7 @@
 <body>
 <?php
 
-use Core\Auth;
+use App\Core\Auth;
 
 $route = $_SERVER['REQUEST_URI'];
 $auth = Auth::check();

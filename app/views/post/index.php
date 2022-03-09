@@ -1,5 +1,5 @@
 <div class="workspace__container">
-    <?php use Models\Post;
+    <?php use App\Models\Post;
     if (!empty($posts) and count($posts) !== 0): ?>
         <?php $p = new Post();
         foreach ($posts as $post): ?>

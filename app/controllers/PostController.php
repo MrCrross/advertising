@@ -1,13 +1,14 @@
 <?php
 
-namespace Controllers;
+namespace  App\Controllers;
 
-use Core\Auth;
-use Core\Controller;
-use Core\View;
-use Models\Category;
-use Models\Post;
-use Models\PostImage;
+
+use App\Core\Auth;
+use App\Core\Controller;
+use App\Core\View;
+use App\Models\Category;
+use App\Models\Post;
+use App\Models\PostImage;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Throwable;
 

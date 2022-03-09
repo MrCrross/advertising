@@ -1,4 +1,4 @@
-<?php use Core\Auth;
+<?php
 
 $route = $_SERVER['REQUEST_URI']; ?>
 <div class="container__fluid">

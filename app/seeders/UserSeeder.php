@@ -1,10 +1,10 @@
 <?php
 
-namespace Seeders;
+namespace App\Seeders;
 
+use App\Models\City;
+use App\Models\User;
 use Illuminate\Database\Seeder;
-use Models\City;
-use Models\User;
 
 class UserSeeder extends Seeder
 {

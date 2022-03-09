@@ -1,7 +1,7 @@
 <div class="workspace__container">
     <div class="container-fluid flex-center">
         <div class="message">
-            <?php use Core\Auth;
+            <?php use App\Core\Auth;
             $address = 'posts/create';
             if(Auth::user()->role ===1) $address = 'admin/posts/create';
             if (isset($message) and $message != ''): ?>

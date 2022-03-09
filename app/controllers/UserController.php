@@ -1,12 +1,14 @@
 <?php
 
-namespace Controllers;
+namespace  App\Controllers;
 
-use Core\Auth;
-use Core\Controller;
-use Core\View;
+
+use App\Core\Auth;
+use App\Core\Controller;
+use App\Core\View;
+use App\Models\User;
 use Illuminate\Database\Capsule\Manager as Capsule;
-use Models\User;
+
 use Throwable;
 
 class UserController extends Controller

@@ -3,7 +3,7 @@
           method="post" enctype="multipart/form-data">
         <div class="container-fluid flex-center">
             <div class="message">
-                <?php use Core\Auth;
+                <?php use App\Core\Auth;
 
                 if (isset($message) and $message != ''): ?>
                     <?php echo $message; ?>

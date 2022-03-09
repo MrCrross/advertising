@@ -1,15 +1,13 @@
 <?php
 
-namespace Controllers;
+namespace App\Controllers;
 
-use Core\Auth;
-use Core\Controller;
-use Core\View;
+use App\Core\Controller;
+use App\Models\Category;
+use App\Models\City;
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Capsule\Manager as Capsule;
-use Models\Category;
-use Models\City;
-use Models\Post;
-use Models\User;
 use Throwable;
 
 class AdminController extends Controller

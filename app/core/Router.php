@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace App\Core;
 
 class Router
 {
@@ -25,7 +25,7 @@ class Router
     public function run()
     {
         if ($this->match()) {
-            $controller_path = 'Controllers\\' . $this->params['controller'];
+            $controller_path = 'App\Controllers\\' . $this->params['controller'];
             $method = $this->params['action'];
             if (method_exists($controller_path,$method)) {
                 $controller = new $controller_path($this->params);

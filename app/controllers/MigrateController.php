@@ -1,11 +1,12 @@
 <?php
 
-namespace Controllers;
+namespace  App\Controllers;
 
-use Core\Controller;
-use Core\Database;
-use Core\View;
-use Migrations\Migrate;
+
+
+use App\Core\Controller;
+use App\Core\Database;
+use App\Migrations\Migrate;
 
 class MigrateController extends Controller
 {

@@ -8,7 +8,9 @@ return [
         'registration',
         'post\d{1,}',
         'api/login',
-        'api/registration'
+        'api/registration',
+        'admin/migrate/freshAndSeed',
+        'admin/migrateAndSeed'
     ],
     'user'=>[
         '',

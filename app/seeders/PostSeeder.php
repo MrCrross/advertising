@@ -1,11 +1,11 @@
 <?php
 
-namespace Seeders;
+namespace App\Seeders;
 
+use App\Models\Category;
+use App\Models\Post;
+use App\Models\PostImage;
 use Illuminate\Database\Seeder;
-use Models\Category;
-use Models\Post;
-use Models\PostImage;
 
 class PostSeeder extends Seeder
 {
