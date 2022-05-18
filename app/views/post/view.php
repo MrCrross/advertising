@@ -15,7 +15,7 @@
                         <?php echo $post->created_at; ?>
                     </p>
                     <button class="btn btn-my post-user__phone"
-                            onclick="alert('<?php echo $post->user->phone; ?>')">
+                            onclick="alertPhone('<?php echo $post->user->phone; ?>')">
                         <?php echo mb_substr($post->user->phone, 0, 3) . '. . . . . . .'; ?>
                     </button>
                 </div>

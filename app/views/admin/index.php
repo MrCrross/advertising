@@ -10,7 +10,7 @@ $route = $_SERVER['REQUEST_URI'];
                 </div>
                 <div class="header-item">
                     <a href="/" class="link">
-                        <?php use Core\Auth; echo Auth::user()->name; ?>
+                        <?php use App\Core\Auth; echo Auth::user()->name; ?>
                     </a>
                 </div>
                 <div class="header-item">

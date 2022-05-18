@@ -21,7 +21,9 @@ class PostController extends Controller
     {
         parent::__construct($route);
         $this->view->layout = 'posts';
-        $this->user = json_decode($_SESSION['user']);
+        if($_SESSION['user']){
+            $this->user = json_decode($_SESSION['user']);
+        }
     }
 
     public function index()
@@ -96,7 +98,7 @@ class PostController extends Controller
         $url = '/public/storage/images/posts/';
         $files = [];
         $address ='/posts/create';
-        if(Auth::user()->role ===1) $address ='admin/posts/create';
+        if(Auth::user()->role ===1) $address ='/admin/posts/create';
         Capsule::beginTransaction();
         try {
             $num = 1;

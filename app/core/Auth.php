@@ -14,6 +14,6 @@ class Auth
 
     public static function check(){
         if(isset($_SESSION['user'])) return true;
-        if(!isset($_SESSION['user'])) return false;
+        if(!isset($_SESSION['user']) or $_SESSION['user']==='') return false;
     }
 }
