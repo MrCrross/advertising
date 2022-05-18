@@ -68,6 +68,11 @@ body {
     font-size: 22px;
 }
 
+.title-2 {
+    font-weight: bold;
+    font-size: 18px;
+}
+
 .btn {
     border-radius: 20px;
     border: 2px solid #C4C4C4;
@@ -237,11 +242,11 @@ button.link {
     min-height: 93vh;
 }
 
-.category-list {
+.filter-list {
     margin: 10px 0;
 }
 
-.category-list__item {
+.filter-list__item {
     margin: 5px 0;
 }
 
@@ -468,16 +473,16 @@ button.link {
         min-height: auto;
     }
 
-    .category-list {
+    .filter-list {
         display: flex;
         flex-direction: row;
     }
 
-    .category-list__item {
+    .filter-list__item {
         margin: 0 5px;
     }
 
-    .category-list__item:first-child {
+    .filter-list__item:first-child {
         margin: 0;
     }
 
@@ -537,11 +542,11 @@ button.link {
         font-size: 20px;
     }
 
-    .category-list {
+    .filter-list {
         display: block;
     }
 
-    .category-list__item {
+    .filter-list__item {
         margin: 5px 0;
     }
 

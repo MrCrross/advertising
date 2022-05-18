@@ -16,11 +16,6 @@ return [
         'controller' => 'AdminController',
         'action' => 'index'
     ],
-    // Вывод определенной категории на главной странице
-    'categories/category\d{1,}' => [
-        'controller' => 'MainController',
-        'action' => 'view'
-    ],
     // Страница Входа
     'login' => [
         'controller' => 'AuthController',

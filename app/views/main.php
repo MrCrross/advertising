@@ -2,24 +2,40 @@
 
 $route = $_SERVER['REQUEST_URI']; ?>
 <div class="container__fluid">
-    <div class="category__container">
-        <p class="title">Категории:</p>
-        <ul class="category-list">
-            <li class="category-list__item">
-                <a href="/" class="link <?php if ($route === '/') echo 'active'; ?>">1. Все категории</a>
-            </li>
-            <?php if (!empty($categories) and count($categories)): ?>
-                <?php foreach ($categories as $key => $category): ?>
-                    <li class="category-list__item">
-                        <a href="/categories/category<?php echo $category->id; ?>"
-                           class="link
-                                   <?php if ($route === '/categories/category' . $category->id) echo 'active'; ?>">
-                            <?php echo strval($key + 2) . '. ' . $category->name; ?></a>
-                    </li>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </ul>
-    </div>
+    <form action="/" method="post">
+        <div class="category__container">
+            <p class="title">Фильтры:</p>
+            <div class="filter-list">
+                <p class="title-2">Категории:</p>
+                <?php if (!empty($categories) and count($categories)): ?>
+                    <?php foreach ($categories as $category): ?>
+                        <div class="filter-list__item">
+                            <input  value="<?php echo $category->id;?>"
+                            <?php if(in_array($category->id,$check_categories) or $check_categories===[]){ echo "checked='checked'";}?>
+                                    class="form-item__input" name="category[]" type="checkbox" >
+                            <span><?php echo $category->name; ?></span>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+                <p class="title-2">Стоимость:</p>
+                <div class="filter-list__item">
+                    <span style="margin: 0 15px 0 5px">от</span>
+                    <input class="form-item__input" style="max-width: 120px;"
+                           type="number" name="min_price" min="<?php echo $min_price; ?>" max="<?php echo $max_price; ?>" value="<?php echo $priceStart; ?>">
+                    <span style="margin: 0 12px 0 5px">до</span>
+                    <input class="form-item__input" style="max-width: 120px; margin-top: 5px"
+                           type="number" name="max_price" min="<?php echo $min_price; ?>" max="<?php echo $max_price; ?>" value="<?php echo $priceEnd; ?>">
+                </div>
+                <p class="title-2">Поиск:</p>
+                <div class="filter-list__item">
+                    <input class="form-item__input" type="search" name="search" value="<?php echo $search; ?>" placeholder="Поиск">
+                </div>
+                <div class="filter-list__item" style="text-align: center">
+                    <button class="btn btn-my form-item__submit" type="submit">Применить</button>
+                </div>
+            </div>
+        </div>
+    </form>
     <div class="workspace__container">
         <?php if (!empty($posts) and count($posts) !== 0): ?>
             <?php foreach ($posts as $post): ?>
@@ -36,7 +52,7 @@ $route = $_SERVER['REQUEST_URI']; ?>
                                 <?php echo $post->created_at; ?>
                             </p>
                             <button class="btn btn-my post-user__phone"
-                                    onclick="alertPhone(<?php echo $post->user->phone;?>)">
+                                    onclick="alertPhone(<?php echo $post->user->phone; ?>)">
                                 <?php echo mb_substr($post->user->phone, 0, 3) . '. . . . . . .'; ?>
                             </button>
                         </div>
