@@ -52,6 +52,7 @@ class AuthController extends Controller
         $first_name = $_POST['first_name'];
         $city = $_POST['city'];
         $address = $_POST['address'];
+        $phone = $_POST['phone'];
         $role = 2;
         Capsule::beginTransaction();
         try {
@@ -63,6 +64,7 @@ class AuthController extends Controller
                 'first_name'=>$first_name,
                 'city_id'=>$city,
                 'address'=>$address,
+                'phone'=>$phone,
             ]);
             Capsule::commit();
             $this::session($user);

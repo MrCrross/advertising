@@ -44,6 +44,7 @@ class UserController extends Controller
         $first_name = $_POST['first_name'];
         $city = $_POST['city'];
         $address = $_POST['address'];
+        $phone = $_POST['phone'];
         $role = $_POST['role'];
         Capsule::beginTransaction();
         try {
@@ -55,6 +56,7 @@ class UserController extends Controller
                 'first_name'=>$first_name,
                 'city_id'=>$city,
                 'address'=>$address,
+                'phone'=>$phone,
             ]);
             Capsule::commit();
             $_SESSION['message'] = 'Пользователь успешно добавлен';
@@ -76,12 +78,15 @@ class UserController extends Controller
         $first_name = $_POST['first_name'];
         $city = $_POST['city'];
         $address = $_POST['address'];
+        $phone = $_POST['phone'];
+
         $data = [
             'name'=>$name,
             'last_name'=>$last_name,
             'first_name'=>$first_name,
             'city_id'=>$city,
-            'address'=>$address
+            'address'=>$address,
+            'phone'=>$phone,
         ];
         $address='/lk';
         if(Auth::user()->role===1){

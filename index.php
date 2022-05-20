@@ -1,5 +1,4 @@
 <?php
-
 use App\Core\Router;
 
 require_once 'debug.php';

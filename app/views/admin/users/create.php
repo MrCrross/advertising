@@ -57,6 +57,11 @@
                            maxlength="255" required>
                 </div>
                 <div class="form-item">
+                    <label for="phone" class="form-item__label">Телефон:</label>
+                    <input type="text" id="phone" name="phone"
+                           class="form-item__input" placeholder="Телефон" maxlength="11" minlength="11">
+                </div>
+                <div class="form-item">
                     <button class="btn form-item__submit" type="submit">
                         Добавить
                     </button>
